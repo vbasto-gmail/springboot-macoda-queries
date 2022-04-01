@@ -18,8 +18,8 @@ import java.io.File;
 @RestController
 public class MacodaQuery {
 	@GetMapping("/query")
-	public String run() {
-		
+	public String run() {  
+//		
 	    String output = "";
 //		File owlFile = new File("ADS.owl");
 //		File owlFile = new File("MaCODA.owl");

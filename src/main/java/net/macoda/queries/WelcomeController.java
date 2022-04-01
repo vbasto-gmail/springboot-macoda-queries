@@ -8,6 +8,6 @@ public class WelcomeController {
 
 	@GetMapping("/welcome")
 	public String welcome() {
-		return "Welcome to springboot heroku macoda queries...!!!";
+		return "Welcome to springboot heroku macoda queries!!!";
 	}
 }

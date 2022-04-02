@@ -3,23 +3,21 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-<!-- 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.6.3</version>
-		<relativePath/>  --> <!-- lookup parent from repository -->
-<!-- </parent>
--->
+		<relativePath/> <!-- lookup parent from repository -->
+ 	</parent>
 <!-- vbasto  BEGIN -->
 
 
-  <parent>
+<!--  <parent>
     <groupId>edu.stanford.swrl</groupId>
     <artifactId>swrlapi-parent</artifactId>
     <version>2.0.8</version>
   </parent>
- 
+--> 
   <groupId>edu.stanford.swrl</groupId>
   <artifactId>swrlapi-example</artifactId>
   <version>2.0.8</version>
@@ -44,18 +42,24 @@
     <tag>release-2.0.8</tag>
   </scm>
 
-
-
 <dependencyManagement>
     <dependencies>
-        <dependency>
-            <!-- Import dependency management from Spring Boot -->
+         <!-- Import dependency management from Spring Boot -->
+<!--     <dependency> 
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-dependencies</artifactId>
             <version>2.6.3</version>
             <type>pom</type>
             <scope>import</scope>
-        </dependency>
+        </dependency> -->
+<dependency>         
+   <groupId>edu.stanford.swrl</groupId>
+    <artifactId>swrlapi-parent</artifactId>
+    <version>2.0.8</version>
+  	<type>pom</type>
+    <scope>import</scope>
+</dependency>
+
     </dependencies>
 </dependencyManagement>
 

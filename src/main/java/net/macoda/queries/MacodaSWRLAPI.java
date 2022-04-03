@@ -81,6 +81,7 @@ public class MacodaSWRLAPI {
 		  tabulatorData += "];";
 
 		  if (bAlsoWriteToConsole) {
+			  System.out.println("Query: " + sQuery);			  
 			  System.out.println("Tabulator Table Header:");
 			  System.out.println(tabulatorColumnsTitlesAndConfigurations);
 			  System.out.println("Tabulator Table Data:");

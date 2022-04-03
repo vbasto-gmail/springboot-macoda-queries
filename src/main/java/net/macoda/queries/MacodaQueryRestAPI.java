@@ -3,9 +3,12 @@ package net.macoda.queries;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.swrlapi.sqwrl.SQWRLQueryEngine;
 
@@ -16,8 +19,14 @@ public class MacodaQueryRestAPI {
     OWLOntology ontology;
     SQWRLQueryEngine queryEngine;
 
-    @GetMapping("/queryapi")
-	public String run() throws IOException {
+//  @GetMapping("/queryapi")
+//	public String run(@RequestParam(value="query", defaultValue="Olá") String query) throws IOException {
+//  Com @GetMapping não funciona bem a query SWRL devido aos caracteres especiais da query
+    @PostMapping("/queryapi") 
+    //public String run(@RequestBody String query) throws IOException {
+    // Com @RequestBody funciona bem se o POST for "raw"
+    // Com @RequestParam funciona bem se o POST for "form-data"
+    public String run(@RequestParam(value="query", defaultValue="") String query) throws IOException {
     	MacodaSWRLAPI macodaAPI = new MacodaSWRLAPI("MaCODA-labelized.owl");
         // Predefined queries presented in the macoda.club web site
         // 0. What are the metaheuristics published after 2015 ?
@@ -37,6 +46,6 @@ public class MacodaQueryRestAPI {
     	aQuery.add("Indicator_based(?_indicatorbased_) ^ Decomposition_based(?_decompositionbased_) ^ Researcher(?_researcher_) ^ hasAuthor(?_indicatorbased_ , ?_researcher_) ^ hasAuthor(?_decompositionbased_ , ?_researcher_) -> sqwrl:select(?_indicatorbased_) ^ sqwrl:select(?_researcher_)");    
 
     	//macodaAPI.executeSWRLQuery(sQuery, bAlsoWriteToConsole, bAlsoWriteToHtmlFile)
-		return macodaAPI.executeSWRLQuery(aQuery.get(0), true, true);
+		return macodaAPI.executeSWRLQuery(query, true, true);
 	}
 }
